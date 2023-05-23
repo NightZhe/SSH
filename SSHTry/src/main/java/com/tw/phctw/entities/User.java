@@ -7,14 +7,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity
-@Table(name = "user")
+@Entity // 对实体注释。任何Hibernate映射对象都要有这个注释
+@Table(name = "user") // 声明此对象映射到数据库的数据表，通过它可以为实体指定表(talbe),目录(Catalog)和schema的名字。
 public class User {
 	// if @GeneratedValue(strategy = GenerationType.AUTO) is not work
 	// ,you have to chaange @GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
+	@Id // 声明此属性为主键。该属性值可以通过应该自身创建，但是Hibernate推荐通过Hibernate生成
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // 指定主键的生成策略。有如下四个值 TABLE：使用表保存id值 IDENTITY：identitycolumn
+														// SEQUENCR ：sequence AUTO：根据数据库的不同使用上面三个
+	@Column(name = "id") // 声明该属性与数据库字段的映射关系，意思就是說你DB欄位要跟這邊 name ="id" id值要一樣
 	private int id;
 
 	@Column(name = "name")

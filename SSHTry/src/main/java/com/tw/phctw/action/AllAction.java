@@ -22,9 +22,8 @@ import com.tw.phctw.service.UserService;
 import net.sf.json.JSONObject;
 
 //import net.sf.json.JSONObject;
-
-@Namespace("/")
-@ResultPath(value = "/")
+//@Namespace("/")
+@ResultPath(value = "/") // 假設沒有ResultPath 59行的 location="index.jsp" 要改成 location="/index.jsp"
 @ParentPackage("json-default")
 public class AllAction extends ActionSupport {
 
@@ -57,15 +56,20 @@ public class AllAction extends ActionSupport {
 	}
 
 	// 註冊
-	@Action(value = "saveuser", results = { @Result(name = "success", location = "/WEB-INF/pages/register.jsp"),
-			@Result(name = "input", location = "/WEB-INF/pages/register.jsp") })
+	@Action(value = "saveuser", results = { @Result(name = "success", location = "index.jsp"),
+			@Result(name = "error", location = "/WEB-INF/pages/register.jsp") })
 	public String execute9() {
 		User user = new User(name, password, email);
-		Boolean ok = userService.register(user);
-		if (!ok) {
+		if (user.getName().equals("")) {
+			addActionError("帳號不能為空值，請重新輸入");
+			return ERROR;
+		}
+		System.out.println("user.name:" + user.getName());
+		Boolean result = userService.register(user);
+		if (!result) {
 
 			addActionError("帳號重複了，請重新註冊");
-			return INPUT;
+			return ERROR;
 		}
 
 		addActionError("註冊成功，請重新登入！");

@@ -19,10 +19,7 @@
 			type="text" name="password" id="password"><br />
 		<button type="submit" id="submit">登入</button>
 	</form>
-	<s:if test="hasActionErrors()">
-		<s:actionerror />
-	</s:if>
-
+	
 	<button type="submit" name="register"
 		onclick="window.location.href='register'">
 		註冊
@@ -31,10 +28,15 @@
 	<button type="submit" name="forgetPassowrd"
 		onclick="window.location.href='forgetPassowrd'">忘記密碼</button>
 
-	<!-- 		 <button type="button" onclick="add()" name=add id="add">Add</button> -->
-<!-- 	<button type="button" name=add id="add">Add/Edit</button> -->
 
-<!-- 	<table id="table" border=1>
+	<s:if test="hasActionErrors()">
+		<s:actionerror />
+	</s:if>
+
+	<!-- 		 <button type="button" onclick="add()" name=add id="add">Add</button> -->
+	<!-- 	<button type="button" name=add id="add">Add/Edit</button> -->
+
+	<!-- 	<table id="table" border=1>
 		<tr>
 			<th>ID</th>
 			<th>Name</th>

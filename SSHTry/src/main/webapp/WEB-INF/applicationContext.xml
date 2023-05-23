@@ -11,7 +11,8 @@
 
 	<!-- 配置Spring的Bean -->
 	<context:component-scan
-		base-package="com.tw.phctw" />
+		base-package="com.tw.phctw" />   
+<!-- 		Spring 掃描檔案你要改成你的目錄 例如我往上面看我的專案結構，Java Resources/src/main/java/com.tw.phctw.action 中擷取com.tw.phctw -->
 
 	<bean id="dataSource"
 		class="org.apache.commons.dbcp.BasicDataSource">

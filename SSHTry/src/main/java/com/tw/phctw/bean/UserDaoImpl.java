@@ -7,7 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.tw.phctw.entities.User;
 
-@Repository
+@Repository // 內部封裝了數據查詢和儲存的邏輯。
 @Transactional
 
 public class UserDaoImpl implements UserDao {
